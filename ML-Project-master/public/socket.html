@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Calories Project</title>
+    <script>
+        const ws = new WebSocket('ws://localhost:3000'); // Adjust if needed for production
+
+        ws.onopen = () => {
+            console.log('Connected to WebSocket server');
+        };
+
+        ws.onmessage = (event) => {
+            document.getElementById('value').innerText = `Heart Rate Value: ${event.data} bpm`;
+        };
+
+        ws.onclose = () => {
+            console.log('Disconnected from WebSocket server');
+        };
+    </script>
+</head>
+<body>
+    <h1>WebSocket Calories Project</h1>
+    <div id="value">Heart Rate Value: 0 bpm</div>
+</body>
+</html>
